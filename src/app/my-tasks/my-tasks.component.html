@@ -1,0 +1,43 @@
+<main class="col ps-md-2 pt-2">
+  <a  data-bs-target="#sidebar" data-bs-toggle="collapse" class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i> Menu</a>
+  <div class="page-header pt-3" >
+      <h2 style="display:inline"><b>My Tasks</b></h2>
+      <app-filter></app-filter>
+  </div>
+  <p class="lead"></p>
+  <hr>
+</main>
+
+
+<div class="container-fluid" >
+    <div class="row mt-2">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <div class="row">
+                <table class="table w-75 ms-1" *ngIf="taskRevealFlagChild">
+                    <thead>
+                      <tr>
+                        <th scope="col">Patient Details</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Task Description</th>
+                        <th scope="col">Due Today</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Comment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let i of patientData">
+                        <td>{{i.full_name}} | {{i.age}}</td>
+                        <td>{{i.facility}}</td>
+                        <td>{{i.description}}</td>
+                        <td>{{i.due_date}}</td>
+                        <td>{{i.task_status}}</td>
+                        <td>{{i.comment}}</td>
+                      </tr>
+                    </tbody>
+                  </table>    
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,68 @@
+<!-- <i class="bi bi-funnel-fill ms-4" (click)="onClickFilterButton()" ></i> -->
+
+<!-- <div class="container" *ngIf="filterRevealFlag">
+    <div class="row">
+        <form action="" method="post">
+            <h6>Priority</h6>
+            <input type="checkbox" style="display: inline-block;" id="high" name="high" value="">
+            <label for="high">High</label><br>
+            <input type="checkbox" style="display: inline-block;" id="medium" name="medium" value="">
+            <label for="high">Medium</label><br>
+            <input type="checkbox" style="display: inline-block;" id="low" name="low" value="">
+            <label for="high">Low</label><br>
+        
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div> -->
+
+<div class="dropdown" style="display: inline;">
+    <i class="bi bi-funnel-fill ms-4 mb-2 btn" style="display: inline;" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+    <ul class="dropdown-menu col-4">
+      <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+      <form action="" method="post" class="ms-4">
+        <h6>Priority</h6>
+        <input type="checkbox" style="display: inline-block;" id="high" name="high" value="">
+        <label for="high">High</label>
+        <input type="checkbox" style="display: inline-block;" id="medium" name="medium" value="">
+        <label for="high">Medium</label>
+        <input type="checkbox" style="display: inline-block;" id="low" name="low" value="">
+        <label for="high">Low</label>
+        <h6>Preset</h6>
+        <input type="radio" style="display: inline-block;" id="1" name="radio" value="">
+        <label for="1">1 hour</label>
+        <input type="radio" style="display: inline-block;" id="2" name="radio" value="">
+        <label for="2">2 hours</label>
+        <input type="radio" style="display: inline-block;" id="4" name="radio" value="">
+        <label for="4">4 hours</label><br>
+        <input type="radio" style="display: inline-block;" id="6" name="radio" value="">
+        <label for="6">6 hours</label>
+        <input type="radio" style="display: inline-block;" id="8" name="radio" value="">
+        <label for="8">8 hours</label>
+        <input type="radio" style="display: inline-block;" id="12" name="radio" value="">
+        <label for="12">12 hours</label>
+        <input type="radio" style="display: inline-block;" id="24" name="radio" value="">
+        <label for="24">24 hours</label>
+        <h6>Status</h6>
+        <input type="checkbox" style="display: inline-block;" id="not_started" name="not_started" value="">
+        <label for="not_started">Not Started</label>
+        <input type="checkbox" style="display: inline-block;" id="on_hold" name="on_hold" value="">
+        <label for="on_hold">On Hold</label><br>
+        <input type="checkbox" style="display: inline-block;" id="in_progress" name="in_progress" value="">
+        <label for="in_progress">In Progress</label>
+        <input type="checkbox" style="display: inline-block;" id="completed" name="completed" value="">
+        <label for="completed">Completed</label><br>
+        <input type="checkbox" style="display: inline-block;" id="overdue" name="overdue" value="">
+        <label for="overdue">Overdue</label><br>
+    
+        <button class="btn btn-primary" style="display: inline;">Apply</button>
+        <button class="btn btn-primary ms-1" style="display: inline;">Reset</button>
+        <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
+    </form>
+    </ul>
+  </div>
+
+
