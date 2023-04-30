@@ -8,6 +8,8 @@ import { MyTasksComponent } from './my-tasks/my-tasks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './my-tasks/filter/filter.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { FilterComponent } from './my-tasks/filter/filter.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

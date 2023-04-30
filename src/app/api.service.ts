@@ -8,6 +8,8 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  getPatientData = ()=> {return this.http.get("http://localhost:8080/view")};   //view all patient details along with the tasks
+  getPatientTasksData = ()=> {return this.http.get("http://localhost:8080/view")};   //view all patient details along with the tasks
+
+  filterPatientTasks=(filterOptionsData:any)=>{return this.http.post("http://localhost:8080/filter",filterOptionsData)}
 
 }

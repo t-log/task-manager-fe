@@ -13,11 +13,11 @@ export class MyTasksComponent {
   @Input() taskRevealFlagChild : boolean = false;
   
   constructor(private api:ApiService){
-    api.getPatientData().subscribe(
+    api.getPatientTasksData().subscribe(
       (response)=>
       {
       this.patientData = response;
-      console.log(this.patientData);  
+      // console.log(this.patientData);  
       }
       )
   }
