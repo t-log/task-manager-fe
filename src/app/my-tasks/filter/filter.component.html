@@ -8,9 +8,9 @@
         <input type="checkbox" name="high" [ngModel]="priorityHigh['high']" (ngModelChange)="updatePriorityHigh($event)">
         <label>High</label>
         <input type="checkbox" name="medium" [ngModel]="priorityMedium['medium']" (ngModelChange)="updatePriorityMedium($event)">
-        <label class="form-label">Medium</label>
+        <label>Medium</label>
         <input type="checkbox"  name="low" [ngModel]="priorityLow['low']" (ngModelChange)="updatePriorityLow($event)">
-        <label class="form-label">Low</label>
+        <label>Low</label>
 
         <h6>Preset</h6>
         <input type="radio" name="radio" value="1" [(ngModel)]="preset" >
@@ -40,9 +40,9 @@
         <input type="checkbox" name="overdue" [ngModel]="statusOverdue['overdue']" (ngModelChange)="updateStatusOverdue($event)">
         <label>Overdue</label><br>
     
-        <button class="btn btn-primary" style="display: inline;" (click)="onClickApply()">Apply</button>
-        <button class="btn btn-primary ms-1" style="display: inline;" (click)="onClickReset();">Reset</button>
-        <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
+        <button class="btn btn-primary" (click)="onClickApply()">Apply</button>
+        <button class="btn btn-primary ms-1" (click)="onClickReset();">Reset</button>
+
        </form>
     </ul>
 </div>

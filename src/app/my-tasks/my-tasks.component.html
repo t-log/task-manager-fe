@@ -8,7 +8,7 @@
   <hr>
 </main>
 
-
+<!-- Table of Patient Task Records -->
 <div class="container-fluid" >
     <div class="row mt-2">
         <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
@@ -26,11 +26,11 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let i of patientData">
-                        <td>{{i.full_name}} | {{i.age}}</td>
+                        <td>{{i.fullName}} | {{i.age}}</td>
                         <td>{{i.facility}}</td>
                         <td>{{i.description}}</td>
-                        <td>{{i.due_date}}</td>
-                        <td>{{i.task_status}}</td>
+                        <td>{{i.dueDate | date : 'd MMM y hh:mm'}}</td>
+                        <td>{{i.taskStatus}}</td>
                         <td>{{i.comment}}</td>
                       </tr>
                     </tbody>

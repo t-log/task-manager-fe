@@ -20,7 +20,7 @@ export class FilterComponent {
   statusOnHold:{[key:string] : boolean} = {'on hold':false};
   statusInProgress:{[key:string] : boolean} = {'in progress':false};
   statusCompleted:{[key:string] : boolean} = {'completed':false};
-  statusOverdue:{[key:string] : boolean} = {'over due':false};
+  statusOverdue:{[key:string] : boolean} = {'overdue':false};
 
   priority = [this.priorityHigh,this.priorityMedium,this.priorityLow];
   status = [this.statusNotStarted,this.statusOnHold,this.statusInProgress,this.statusCompleted,this.statusOverdue];
@@ -97,7 +97,7 @@ export class FilterComponent {
     this.statusOnHold = {'on hold':false};
     this.statusInProgress = {'in progress':false};
     this.statusCompleted = {'completed':false};
-    this.statusOverdue = {'over due':false};
+    this.statusOverdue = {'overdue':false};
 
 
     this.preset  = {'preset': 'none'};
