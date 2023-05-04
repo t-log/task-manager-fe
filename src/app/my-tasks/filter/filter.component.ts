@@ -29,7 +29,7 @@ export class FilterComponent {
 
   priority = [this.priorityHigh,this.priorityMedium,this.priorityLow];
   status = [this.statusNotStarted,this.statusOnHold,this.statusInProgress,this.statusCompleted,this.statusOverdue];
-  preset :{[key:string]: number} = {'preset': 0};
+  preset :number = 0;
 
   updatePriorityHigh(event: Event) {
     // const newValue = (event.target as HTMLInputElement);
@@ -71,7 +71,7 @@ export class FilterComponent {
     //Updating filterFlag (filterFlag is a global varible in service.ts) to true so when apply is clicked the value of api link should be /view?filter=true
     this.api.setFilterFlag(true);
 
-    this.preset = this.preset;
+    // this.preset = this.preset;
 
     // console.log("Value of preset"+ this.preset);
     
@@ -94,7 +94,7 @@ export class FilterComponent {
     this.statusOverdue = {'overdue':false};
 
 
-    this.preset  = {'preset': 0};
+    this.preset  = 0;
 
 
     this.api.setFilterFlag(false);

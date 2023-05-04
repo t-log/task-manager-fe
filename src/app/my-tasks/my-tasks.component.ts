@@ -32,21 +32,21 @@ export class MyTasksComponent {
     
     this.api.filterPatientTasks(this.receivedFilterData).subscribe(
         (response:any)=>{
-          console.log("Filter end point response"+JSON.stringify(response));
-          this.patientData = response;
-          console.log(this.patientData);
-          
+
+          if(response.length == 0)
+          {
+            alert("No matching records found!") 
+          }
+            
+          else{
+            console.log("Filter end point response"+JSON.stringify(response));
+            this.patientData = response;
+            console.log(this.patientData);
+          }          
           // this.filteredResponseEvent.emit(response);
           
           // console.log("The response bounced back is"+ JSON.stringify(response));
-          // if(response.status=="success")
-          // {
-          //   alert("") 
-          // }
-            
-          // else{
-          //   alert("")
-          // }
+          
           
         }
       )
