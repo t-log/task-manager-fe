@@ -37,10 +37,10 @@
         <label>In Progress</label>
         <input type="checkbox" name="completed" [ngModel]="statusCompleted['completed']" (ngModelChange)="updateStatusCompleted($event)">
         <label>Completed</label><br>
-        <input type="checkbox" name="overdue" [ngModel]="statusOverdue['overdue']" (ngModelChange)="updateStatusOverdue($event)">
+        <input type="checkbox" name="over due" [ngModel]="statusOverdue['over due']" (ngModelChange)="updateStatusOverdue($event)">
         <label>Overdue</label><br>
     
-        <button class="btn btn-primary" (click)="onClickApply()">Apply</button>
+        <button class="btn btn-primary" (click)="onClickApply()" >Apply</button>
         <button class="btn btn-primary ms-1" (click)="onClickReset();">Reset</button>
 
        </form>

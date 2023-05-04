@@ -6,10 +6,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
+  filterFlag : boolean;
 
-  getPatientTasksData = ()=> {return this.http.get("http://localhost:8080/view")};   //view all patient details along with the tasks
+  constructor(private http:HttpClient) { 
+    this.filterFlag = false;
+  }
 
-  filterPatientTasks=(filterOptionsData:any)=>{return this.http.post("http://localhost:8080/filter",filterOptionsData)}
+  getFilterFlag(){
+    return this.filterFlag;
+  }
+
+  setFilterFlag(val : boolean){
+    this.filterFlag = val;
+  }
+
+
+  getPatientTasksData = ()=> {return this.http.get("http://localhost:8080/view?filter="+this.filterFlag)};   //view all patient details along with the tasks
+
+  // filterPatientTasks=(filterOptionsData:any)=>{return this.http.post("http://localhost:8080/filter",filterOptionsData)}
+
+  filterPatientTasks=(filterOptionsData:any)=>{return this.http.post("http://localhost:8080/view?filter="+this.filterFlag,filterOptionsData)}
 
 }

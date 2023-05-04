@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -12,6 +12,11 @@ export class FilterComponent {
 
   filterRevealFlag : boolean = false;
 
+  @Output() filteredEvent = new EventEmitter<any>() ;
+
+  @Output() resetEvent = new EventEmitter<any>();
+
+
   priorityHigh:{[key:string] : boolean} = {'high':false};
   priorityMedium:{[key:string] : boolean} = {'medium':false};
   priorityLow:{[key:string] : boolean} = {'low':false};
@@ -20,11 +25,11 @@ export class FilterComponent {
   statusOnHold:{[key:string] : boolean} = {'on hold':false};
   statusInProgress:{[key:string] : boolean} = {'in progress':false};
   statusCompleted:{[key:string] : boolean} = {'completed':false};
-  statusOverdue:{[key:string] : boolean} = {'overdue':false};
+  statusOverdue:{[key:string] : boolean} = {'over due':false};
 
   priority = [this.priorityHigh,this.priorityMedium,this.priorityLow];
   status = [this.statusNotStarted,this.statusOnHold,this.statusInProgress,this.statusCompleted,this.statusOverdue];
-  preset :{[key:string]: string} = {'preset': 'none'};
+  preset :{[key:string]: number} = {'preset': 0};
 
   updatePriorityHigh(event: Event) {
     // const newValue = (event.target as HTMLInputElement);
@@ -53,7 +58,7 @@ export class FilterComponent {
     this.statusCompleted['completed'] = event ? true : false;
   }
   updateStatusOverdue(event: Event){
-    this.statusOverdue['overdue'] = event ? true : false;
+    this.statusOverdue['over due'] = event ? true : false;
   }
   
 
@@ -62,29 +67,18 @@ export class FilterComponent {
   }
 
   onClickApply(){
+
+    //Updating filterFlag (filterFlag is a global varible in service.ts) to true so when apply is clicked the value of api link should be /view?filter=true
+    this.api.setFilterFlag(true);
+
     this.preset = this.preset;
+
     // console.log("Value of preset"+ this.preset);
     
-    let filterData:any = {priority:this.priority,status:this.status,preset:this.preset};
-    // console.log(filterData);
+    let filterData = {priority:this.priority,status:this.status,preset:this.preset};
+    console.log("Data format sent from Front End is "+JSON.stringify(filterData));
 
-    this.api.filterPatientTasks(filterData).subscribe(
-      (response:any)=>{
-        // console.log("The response bounced back is"+ JSON.stringify(response));
-        // if(response.status=="success")
-        // {
-        //   alert("") 
-        // }
-          
-        // else{
-        //   alert("")
-        // }
-        
-      }
-    )
-    
-
-
+    this.filteredEvent.emit(filterData);
 
   }
 
@@ -100,7 +94,23 @@ export class FilterComponent {
     this.statusOverdue = {'overdue':false};
 
 
-    this.preset  = {'preset': 'none'};
+    this.preset  = {'preset': 0};
+
+
+    this.api.setFilterFlag(false);
+
+    this.api.getPatientTasksData().subscribe(
+      (response) => {
+        // this.patientData = response;
+        // console.log(this.patientData);
+        this.resetEvent.emit(response);
+        
+        console.log("Hello"+response);
+        
+      }
+      
+    )
+    
 
   }
 

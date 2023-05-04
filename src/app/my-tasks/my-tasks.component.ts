@@ -8,18 +8,52 @@ import { ApiService } from '../api.service';
 })
 export class MyTasksComponent {
 
-  patientData:any = [];
+  patientData: any = [];
 
-  @Input() taskRevealFlagChild : boolean = false;
-  
-  constructor(private api:ApiService){
-    api.getPatientTasksData().subscribe(
-      (response)=>
-      {
-      this.patientData = response;
-      // console.log(this.patientData);  
-      }
+  @Input() taskRevealFlagChild: boolean = false;
+
+  receivedFilterData: any = [];  //filter Options
+
+  constructor(private api: ApiService) {
+      api.getPatientTasksData().subscribe(
+        (response) => {
+          this.patientData = response;
+          // console.log(this.patientData);  
+        }
+      )
+    
+  }
+
+  receivedData(data : any){
+
+    this.receivedFilterData = data;
+    console.log("Filter Options")
+    console.log(this.receivedFilterData);
+    
+    this.api.filterPatientTasks(this.receivedFilterData).subscribe(
+        (response:any)=>{
+          console.log("Filter end point response"+JSON.stringify(response));
+          this.patientData = response;
+          console.log(this.patientData);
+          
+          // this.filteredResponseEvent.emit(response);
+          
+          // console.log("The response bounced back is"+ JSON.stringify(response));
+          // if(response.status=="success")
+          // {
+          //   alert("") 
+          // }
+            
+          // else{
+          //   alert("")
+          // }
+          
+        }
       )
   }
-  
+
+  resetTable(data : any){
+    this.patientData = data;
+  }
+
 }
