@@ -31,34 +31,36 @@ export class FilterComponent {
   status = [this.statusNotStarted,this.statusOnHold,this.statusInProgress,this.statusCompleted,this.statusOverdue];
   preset :number = 0;
 
-  updatePriorityHigh(event: Event) {
+  updatePriorityHigh(event: any) {
     // const newValue = (event.target as HTMLInputElement);
-    this.priorityHigh['high'] = event ? true : false;
+    // console.log("high event%");
+    // console.log(event.target.checked);
+    this.priorityHigh['high'] = event.target.checked;
     // console.log(this.priorityHigh);  
   }
-  updatePriorityMedium(event: Event) {
+  updatePriorityMedium(event: any) {
     // const newValue = JSON.stringify(event); 
-    this.priorityMedium['medium'] = event ? true : false;
+    this.priorityMedium['medium'] = event.target.checked;
     // console.log(this.priorityMedium);  
   }
-  updatePriorityLow(event: Event) {
-    this.priorityLow['low'] = event ? true : false;
+  updatePriorityLow(event: any) {
+    this.priorityLow['low'] = event.target.checked;
   }
 
-  updateStatusNotStarted(event: Event){
-    this.statusNotStarted['not started'] = event ? true : false;
+  updateStatusNotStarted(event: any){
+    this.statusNotStarted['not started'] = event.target.checked;
   }
-  updateStatusOnHold(event: Event){
-    this.statusOnHold['on hold'] = event ? true : false;
+  updateStatusOnHold(event: any){
+    this.statusOnHold['on hold'] = event.target.checked;
   }
-  updateStatusInProgress(event: Event){
-    this.statusInProgress['in progress'] = event ? true : false;
+  updateStatusInProgress(event: any){
+    this.statusInProgress['in progress'] = event.target.checked;
   }
-  updateStatusCompleted(event: Event){
-    this.statusCompleted['completed'] = event ? true : false;
+  updateStatusCompleted(event: any){
+    this.statusCompleted['completed'] = event.target.checked;
   }
-  updateStatusOverdue(event: Event){
-    this.statusOverdue['over due'] = event ? true : false;
+  updateStatusOverdue(event: any){
+    this.statusOverdue['over due'] = event.target.checked;
   }
   
 
@@ -70,11 +72,7 @@ export class FilterComponent {
 
     //Updating filterFlag (filterFlag is a global varible in service.ts) to true so when apply is clicked the value of api link should be /view?filter=true
     this.api.setFilterFlag(true);
-
-    // this.preset = this.preset;
-
-    // console.log("Value of preset"+ this.preset);
-    
+        
     let filterData = {priority:this.priority,status:this.status,preset:this.preset};
     console.log("Data format sent from Front End is "+JSON.stringify(filterData));
 
@@ -83,6 +81,8 @@ export class FilterComponent {
   }
 
   onClickReset(){
+    console.log("Rest button clicked");
+    
     this.priorityHigh = {'high':false};
     this.priorityMedium = {'medium':false};
     this.priorityLow = {'low':false};
@@ -91,27 +91,23 @@ export class FilterComponent {
     this.statusOnHold = {'on hold':false};
     this.statusInProgress = {'in progress':false};
     this.statusCompleted = {'completed':false};
-    this.statusOverdue = {'overdue':false};
-
+    this.statusOverdue = {'over due':false};
 
     this.preset  = 0;
-
 
     this.api.setFilterFlag(false);
 
     this.api.getPatientTasksData().subscribe(
       (response) => {
-        // this.patientData = response;
-        // console.log(this.patientData);
         this.resetEvent.emit(response);
+        // console.log("from reset");
+        this.priority = [this.priorityHigh,this.priorityMedium,this.priorityLow];
+        this.status = [this.statusNotStarted,this.statusOnHold,this.statusInProgress,this.statusCompleted,this.statusOverdue];
+        console.log("Hello the response is"+response);
         
-        console.log("Hello"+response);
-        
-      }
-      
-    )
-    
+      }     
+    )    
 
+    // window.location.reload();
   }
-
 }

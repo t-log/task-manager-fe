@@ -5,11 +5,11 @@
       <form action="" method="post" class="ms-4">
 
         <h6>Priority</h6>
-        <input type="checkbox" name="high" [ngModel]="priorityHigh['high']" (ngModelChange)="updatePriorityHigh($event)">
+        <input type="checkbox" name="high" [ngModel]="priorityHigh['high']" (change)="updatePriorityHigh($event)">
         <label>High</label>
-        <input type="checkbox" name="medium" [ngModel]="priorityMedium['medium']" (ngModelChange)="updatePriorityMedium($event)">
+        <input type="checkbox" name="medium" [ngModel]="priorityMedium['medium']" (change)="updatePriorityMedium($event)">
         <label>Medium</label>
-        <input type="checkbox"  name="low" [ngModel]="priorityLow['low']" (ngModelChange)="updatePriorityLow($event)">
+        <input type="checkbox"  name="low" [ngModel]="priorityLow['low']" (change)="updatePriorityLow($event)">
         <label>Low</label>
 
         <h6>Preset</h6>
@@ -29,15 +29,15 @@
         <label>24 hours</label> 
 
         <h6>Status</h6>
-        <input type="checkbox" name="not_started" [ngModel]="statusNotStarted['not started']" (ngModelChange)="updateStatusNotStarted($event)">
+        <input type="checkbox" name="not started" [ngModel]="statusNotStarted['not started']" (change)="updateStatusNotStarted($event)">
         <label>Not Started</label>
-        <input type="checkbox" name="on_hold" [ngModel]="statusOnHold['on hold']" (ngModelChange)="updateStatusOnHold($event)">
+        <input type="checkbox" name="on hold" [ngModel]="statusOnHold['on hold']" (change)="updateStatusOnHold($event)">
         <label>On Hold</label><br>
-        <input type="checkbox" name="in_progress" [ngModel]="statusInProgress['in progress']" (ngModelChange)="updateStatusInProgress($event)">
+        <input type="checkbox" name="in progress" [ngModel]="statusInProgress['in progress']" (change)="updateStatusInProgress($event)">
         <label>In Progress</label>
-        <input type="checkbox" name="completed" [ngModel]="statusCompleted['completed']" (ngModelChange)="updateStatusCompleted($event)">
+        <input type="checkbox" name="completed" [ngModel]="statusCompleted['completed']" (change)="updateStatusCompleted($event)">
         <label>Completed</label><br>
-        <input type="checkbox" name="over due" [ngModel]="statusOverdue['over due']" (ngModelChange)="updateStatusOverdue($event)">
+        <input type="checkbox" name="over due" [ngModel]="statusOverdue['over due']" (change)="updateStatusOverdue($event)">
         <label>Overdue</label><br>
     
         <button class="btn btn-primary" (click)="onClickApply()" >Apply</button>
